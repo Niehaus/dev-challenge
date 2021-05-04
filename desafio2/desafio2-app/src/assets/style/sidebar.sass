@@ -1,0 +1,231 @@
+@import variables
+@import responsive
+
+.wrapper
+  p
+    font-size: 1.1em
+    font-weight: 300
+    line-height: 1.7em
+    color: #999
+
+.wrapper a,
+.wrapper a:hover,
+.wrapper a:focus
+  color: inherit
+  text-decoration: none
+  transition: all 0.3s
+
+.wrapper .side-icon,
+.wrapper span
+  display: inline-block
+
+/*Content Style */
+
+#content
+  width: 100%
+  padding: 30px
+  height: calc(100vh - 60px)
+  transition: all 0.3s
+
+  overflow-x: hidden
+
+/* Sidebar Style */
+#user-pic
+  text-align: center
+  margin: 10px 0
+
+  img
+    width: 80px
+
+.side-icon
+  height: 20px
+
+  &.prod-icon
+    margin-left: -4px
+
+.li-title
+  transition: display .4s cubic-bezier(.5, 0, .3, 1)
+  visibility: visible
+  opacity: 1
+  display: block
+
+
+.wrapper
+  display: flex
+  align-items: stretch
+
+  .dropdown-toggle
+    &::after
+      display: block
+      position: absolute
+      top: 50%
+      right: 20px
+      transform: translateY(-50%)
+
+  :not(.active)
+    ul
+      ul
+        a
+          font-size: 0.9em !important
+          padding-left: 30px !important
+
+    &.CTAs
+      a
+        text-align: center
+        font-size: 0.9em !important
+        display: block
+        border-radius: 5px
+        margin-bottom: 5px
+
+#sidebar
+  min-width: 250px
+  max-width: 250px
+  background-color: $content-bg
+  color: $commom-black
+  transition: all 0.3s
+
+  &.active
+    min-width: 80px
+    max-width: 80px
+    text-align: center
+
+    .sidebar-header
+      padding: 10px 0
+
+
+    #user-pic
+      img
+        width: 40px
+
+    .dropdown-toggle .side-icon,
+    .outer-icon .side-icon
+      margin-left: 20px
+
+
+    .li-title
+      display: none
+      visibility: hidden
+      opacity: 0
+      transition: visibility 0s, opacity 0.5s linear
+
+    .sidebar-header
+      strong
+        display: block
+
+    ul
+      li
+        a
+          padding: 20px 10px
+          text-align: center
+          font-size: 0.85em
+
+          .side-icon
+            margin-right: 0
+            font-size: 1.8em
+            margin-bottom: 5px
+
+          .act-icon
+            margin-right: 0
+
+    .dropdown-toggle
+      &::after
+        top: auto
+        bottom: 10px
+        right: 55%
+        -webkit-transform: translateX(50%)
+        -ms-transform: translateX(50%)
+        transform: translateX(50%)
+
+  ul
+    li
+      a
+        text-align: left
+        padding: 10px
+        font-size: 1em
+        display: block
+
+        &:hover
+          color: $gray-font
+          background: $dev-white
+
+        .side-icon, .act-icon
+          margin-right: 10px
+          margin-bottom: 5px
+
+
+    &.components
+      padding: 20px 0
+
+  .sidebar-header
+    padding: 20px
+
+    strong
+      display: none
+      font-size: 1.8em
+
+#sidebar.active .sidebar-header h6
+  display: none
+
+#sidebar ul li.active > a, .wrapper a[aria-expanded="true"]
+  color: $gray-font
+  background: $dev-white
+
+a[data-bs-toggle="collapse"]
+  position: relative
+
+
+/* Media Queries */
+@media(max-width &: $md)
+  #sidebar
+    min-width: 80px
+    max-width: 80px
+    text-align: center
+    margin-left: -80px !important
+
+    > ul, .sidebar-header
+      display: none
+  .wrapper
+    .dropdown-toggle
+      &::after
+        top: auto
+        bottom: 10px
+        right: 50%
+        -webkit-transform: translateX(50%)
+        -ms-transform: translateX(50%)
+        transform: translateX(50%)
+  #sidebar
+    margin-left: 0
+
+    &.active
+      margin-left: 0 !important
+
+      > ul, .sidebar-header
+        display: block
+
+    ul
+      li
+        a
+          padding: 20px 10px
+
+          span
+            font-size: 0.85em
+
+          .side-icon
+            margin-right: 0
+            display: block
+            font-size: 1.3em
+            margin-left: 20px
+
+            &.prod-icon
+              margin-left: 16px
+
+      ul
+        a
+          padding: 20px 10px !important
+
+    .sidebar-header h6,
+    .CTAs
+      display: none
+  #sidebarCollapse
+    span
+      display: none

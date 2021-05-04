@@ -1,0 +1,10 @@
+$under-sm: 400px
+$sm: 576px
+$md: 768px
+$lg: 992px
+$xl: 1200px
+$xxl: 1400px
+
+@mixin between-breakpoints($lower, $upper)
+  @media (min-width: $lower) and (max-width: ($upper))
+    @content
