@@ -12,11 +12,11 @@ P_LOTES = 10000
 while True:
   try:
     n_caixas = int(input())
-    if n_caixas > MAX_NUM_CAIXAS: continue 
+    if n_caixas > MAX_NUM_CAIXAS: break 
     range_error = False
     lotes = []
     for i in range(0, n_caixas):
-        lote_range = input().split(' ') # x, y
+        lote_range = input().split() # x, y
         lote_parafuso, lote_porca = int(lote_range[0]), int(lote_range[1])  
         if lote_parafuso > lote_porca or lote_porca > RANGE_MAX:
             range_error = True
@@ -24,7 +24,7 @@ while True:
         elif (len(lotes) < P_LOTES):
             for j in range(lote_parafuso, lote_porca + 1):
                 lotes.append(j)
-    if range_error: continue
+    if range_error: break
     lotes = sorted(lotes)    
     pesquisa = int(input())
     found = False
@@ -42,5 +42,5 @@ while True:
         print(f"{pesquisa} found from {range_start} to {range_end}")
     else:
         print(f"{pesquisa} not found")
-  except EOFError:
+  except (EOFError, ValueError) as e:
     break

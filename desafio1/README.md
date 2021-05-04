@@ -6,7 +6,7 @@ Este algoritmo é referente ao desafio número 1520 do URI e pode ser encontrado
 
 Para rodar o programa é necessário utilizar o `Python3`ou superior como interpretador e afim de que sua saída seja completamente redirecionada a um arquivo texto para facilitar o teste basta utilizar o comando a seguir:
     
-    python3 1520.py > saida1520.txt
+    python3 1520.py > saida_1520.txt
 
 ## How to run tests
 
