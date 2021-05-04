@@ -36,9 +36,9 @@ while True:
                 found = True
             else:
                 range_end = i
-    if range_end == None and found:
-        range_end = range_start
     if found:
+        if range_end == None:
+            range_end = range_start
         print(f"{pesquisa} found from {range_start} to {range_end}")
     else:
         print(f"{pesquisa} not found")
