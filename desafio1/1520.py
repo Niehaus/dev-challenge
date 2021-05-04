@@ -1,25 +1,34 @@
+"""
+author: Barbara Boechat
+date: 03/04/2021
+
+URI PROBLEM 1520 - 'Parafusos e Porcas' -
+"""
+
+MAX_NUM_CAIXAS = 100
+RANGE_MAX = 100
+P_LOTES = 10000
+
 while True:
   try:
     n_caixas = int(input())
+    if n_caixas > MAX_NUM_CAIXAS: continue 
     range_error = False
-    if n_caixas > 100:
-        break
     lotes = []
     for i in range(0, n_caixas):
-        lote_range = input()   
-        lote_parafuso, lote_porca = lote_range.split(' ') # x, y
-        lote_parafuso, lote_porca = int(lote_parafuso), int(lote_porca)
-        print("x:", lote_parafuso, "y", lote_porca)
-        if lote_parafuso > lote_porca or lote_porca > 100:
+        lote_range = input().split(' ') # x, y
+        lote_parafuso, lote_porca = int(lote_range[0]), int(lote_range[1])  
+        if lote_parafuso > lote_porca or lote_porca > RANGE_MAX:
             range_error = True
             break
-        if range_error: break
-        for j in range(lote_parafuso, lote_porca + 1):
-            lotes.append(j)
-    lotes = sorted(lotes)            
+        elif (len(lotes) < P_LOTES):
+            for j in range(lote_parafuso, lote_porca + 1):
+                lotes.append(j)
+    if range_error: continue
+    lotes = sorted(lotes)    
     pesquisa = int(input())
     found = False
-    range_start, range_end = "", ""
+    range_start, range_end = None, None
     for i, lote in enumerate(lotes):
         if lote == pesquisa:
             if found == False:
@@ -27,6 +36,8 @@ while True:
                 found = True
             else:
                 range_end = i
+    if range_end == None and found:
+        range_end = range_start
     if found:
         print(f"{pesquisa} found from {range_start} to {range_end}")
     else:
