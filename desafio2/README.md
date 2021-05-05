@@ -12,6 +12,14 @@
     npm install
     npm run dev
 
+## Modo de Desenvolvimento
+
+Para rodar e testar em modo de desenvolvimento:
+    
+    cd desafio2-app
+    npm install
+    npm run dev    
+    
 ## Build de distribuição 
     
     npm install && npm run build
